@@ -24,6 +24,10 @@ export default function TaskList() {
     // We're dispatching the Pinned event back to our store
     dispatch(updateTaskState({ id: value, newTaskState: 'TASK_PINNED' }));
   };
+  const unpinTask = (value) => {
+    // We're dispatching the Unpinned event back to our store
+    dispatch(updateTaskState({ id: value, newTaskState: 'TASK_INBOX' }));
+  };
   const archiveTask = (value) => {
     // We're dispatching the Archive event back to our store
     dispatch(updateTaskState({ id: value, newTaskState: 'TASK_ARCHIVED' }));
@@ -67,6 +71,7 @@ export default function TaskList() {
           key={task.id}
           task={task}
           onPinTask={(task) => pinTask(task)}
+          onUnpinTask={(task) => unpinTask(task)}
           onArchiveTask={(task) => archiveTask(task)}
         />
       ))}
